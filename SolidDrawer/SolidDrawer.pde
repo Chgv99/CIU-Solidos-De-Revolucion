@@ -15,7 +15,7 @@ ArrayList<Polygon> polygons;
 
 //// --BOOLEAN--
 //States
-boolean main_menu, help, create_vertex, end_shape, first_vertex, rotate;
+boolean main_menu, help, about, create_vertex, end_shape, first_vertex, rotate;
 //Inputs
 boolean space, click, left_drag, right_drag, join;
 
@@ -44,11 +44,17 @@ final String HELP_TEXT =
 "[R] Erases the current drawing completely."+DELIMITER+
 ""+DELIMITER+
 "3D mode:"+DELIMITER+
-"[Left Mouse Drag] Moves the selected shape in the x and y axis."+DELIMITER+
-"[Right Mouse Drag] Rotates the selected shape in the x and y axis."+DELIMITER+
+"[Left Mouse Drag] [Right Mouse Drag] Move and rotate the selected shape in the x and y axis."+DELIMITER+
 "[R] Deletes the selected 3D shape."+DELIMITER+
-"[  ] Goes back to the drawing screen where you can add another 3d shape."+DELIMITER+
-"[H] to exit";
+"[SPACE] Goes back to the drawing screen where you can add another 3d shape."+DELIMITER+
+"[ESC] Main Menu. Deletes everything."+DELIMITER+
+""+DELIMITER+
+"[H] Exit";
+final String ABOUT_TEXT = 
+"Made by Christian García Viguera"+DELIMITER+
+"https://chgv99.github.io"+DELIMITER+
+""+DELIMITER+
+"[A] Exit";
 
 class Vertex{
   int x, y;
@@ -87,7 +93,8 @@ void setup(){
   end_shape = false;
   first_vertex = true;
   help = false;
-  join = true;
+  join = false;
+  println("Join: " + join);
   
   translate_x = width/2;
   translate_y = height/2;
@@ -104,7 +111,8 @@ void draw() {
     printHelp();
   } else {
     if (main_menu){
-      printMainMenu();
+      if (about) printAbout();
+      else printMainMenu();
     } else {
       printProgram();
     }
@@ -134,6 +142,17 @@ void key() {
   }
 }
 
+void printAbout() {
+  background(0);
+  fill(255, 0, 0);
+  textSize(30);
+  textAlign(CENTER);
+  text("About", width/2, height/2 - 50);
+  textSize(15);
+  fill(255, 255, 255);
+  text(ABOUT_TEXT, width/2, height/2);
+}
+
 void printHelp() {
   background(0);
   fill(255, 0, 0);
@@ -154,7 +173,8 @@ void printMainMenu(){
   textSize(20);
   fill(255, 255, 255);
   text("[SPACE] to start drawing", width/2, height/2);
-  text("[H] to show help", width/2, height/2 + 40);
+  text("[H] Help", width/2, height/2 + 40);
+  text("[A] About", width/2, height/2 + 80);
 }
 
 void printPoints(){
@@ -184,18 +204,32 @@ void showTextInHUD(String str1, float x, float y) {
 void printProgram(){
   background(0);
   translate(translate_x, translate_y, translate_z);
-  stroke(255, 0, 0);
-  textSize(16);
-  
+  textAlign(LEFT);
   if (end_shape) {
     if (rotate) {
       //showTextInHUD("[Left Mouse Drag] Move shape    [Right Mouse Drag] Rotate shape    [R] Reset shape    [+][-] Zoom    [ESC] Main menu",
       //              width/2, 
       //              height - 20);
-      text("[Left Mouse Drag] Move shape    [Right Mouse Drag] Rotate shape    [R] Reset shape    [+][-] Zoom    [ESC] Main menu", 
+      /*noStroke();
+      fill(10);
+      
+      rect(-width/2, height/2 - 40, width, 40);*/
+      styleRegular();
+      textAlign(CENTER);
+      text("[Left Mouse Drag] Move shape    [Right Mouse Drag] Rotate shape",
+            0, 
+            (height/2) - 50, 
+            -translate_z);
+      text("[SPACE] Add new shape    [R] Delete shape    [+][-] Zoom    [ESC] Main menu", 
             0, 
             (height/2) - 20, 
             -translate_z);
+      if (shapes_3d.size() > 1 ) {
+        text("[Left Arrow][Right Arrow] Select shape",
+            0, 
+            (height/2) - 80, 
+            -translate_z);
+      }
       if (left_drag){
         //translate_x += mouseX - pmouseX;
         //translate_y += mouseY - pmouseY;
@@ -222,7 +256,12 @@ void printProgram(){
       }
     } else {
       line(0, 0 - height/2, 0, height - height/2);
-      text("[R] Reset shape    [SPACE] Confirm shape", 0, height-20 - height/2, -translate_z);
+      styleTitle();
+      text("Build shape?", -width/2 + 100, -60);
+      styleRegular();
+      //text("[R] Reset shape    [SPACE] Confirm shape", 0, height-20 - height/2, -translate_z);
+      text("[R] Reset shape", -width/2 + 100, -20);
+      text("[SPACE] Confirm shape", -width/2 + 100, 20);
       shape(shape);
     }
     //translate(0, 0);
@@ -235,6 +274,7 @@ void printProgram(){
     //Dibujar vértices
     printPoints();
     if (create_vertex) {
+      if (vertices.size() == 0) first_vertex = true;
       if (mouseX- width/2 < 0) vertices.add(new Vertex(0, mouseY  - height/2));//shape.vertex(width/2, mouseY);
       else {
         if (first_vertex && join){
@@ -247,10 +287,33 @@ void printProgram(){
       last_x = mouseX - width/2;
       last_y = mouseY - height/2;
     }
-    
-    if (join) text("[Z] Undo vertex    [X] Unjoin center    [R] Reset shape    [SPACE] Draw shape    [ESC] Main menu", 0, height-20  - height/2);
-    else text("[Z] Undo vertex    [X] Join center    [R] Reset shape    [SPACE] Draw shape    [ESC] Main menu", 0, height-20  - height/2);
+    styleTitle();
+    text("Draw", -width/2 + 100, -140);
+    styleRegular();
+    text("[LClick] Create a vertex.", -width/2 + 100, -100);
+    text("[Z] Undo vertex", -width/2 + 100, -60);
+    //text("[Z] Undo vertex    [X] Unjoin center    [R] Reset shape    [SPACE] Draw shape    [ESC] Main menu", 0, height-20  - height/2);
+    if (join) text("[X] Unjoin center", -width/2 + 100, -20);
+    //text("[Z] Undo vertex    [X] Join center    [R] Reset shape    [SPACE] Draw shape    [ESC] Main menu", 0, height-20  - height/2);
+    else text("[X] Join center", -width/2 + 100, -20);
+    text("[R] Reset shape", -width/2 + 100, 20);
+    text("[SPACE] Draw shape", -width/2 + 100, 60);
+    text("[ESC] Main menu", -width/2 + 100, 100);
   }
+}
+
+void styleTitle() {
+  fill(255, 0, 0);
+  stroke(255,0,0);
+  strokeWeight(2);
+  textSize(32);
+}
+
+void styleRegular() {
+  fill(255);
+  stroke(255,0,0);
+  strokeWeight(2);
+  textSize(16);
 }
 
 void keyPressed() {
@@ -265,10 +328,12 @@ void keyReleased() {
     if (keyCode == LEFT){
       print(shape_selected);
       if (shape_selected > 0) shape_selected--;
+      else shape_selected = shapes_3d.size() - 1;
     }
     if (keyCode == RIGHT){
       print(shape_selected);
       if (shape_selected < shapes_3d.size() - 1) shape_selected++;
+      else shape_selected = 0;
     }
   } else {
     if (keyCode == ' ') {
@@ -282,6 +347,7 @@ void keyReleased() {
         if (!end_shape && !vertices.isEmpty()){
           println("holas");
           makeShape();
+          //shape(shape);
           end_shape = true;
         } else if (end_shape && rotate) {
           /*if (rotate) {
@@ -304,7 +370,7 @@ void keyReleased() {
       println("rotate: " + rotate);
     }
     
-    if (keyCode == 'H'){
+    if (!about && keyCode == 'H'){
       help = !help;
     }
     
@@ -326,6 +392,8 @@ void keyReleased() {
             reset();
           }
         } else {
+          end_shape = false;
+            rotate = false;
           reset();
         }
         
@@ -347,9 +415,13 @@ void keyReleased() {
       if (keyCode == 'X'){
         if (!rotate) {
           join = !join;
+          println("Join: " + join);
         }
       }
     } else {
+      if (!help && keyCode == 'A'){
+        about = !about;
+      }
     }
     
   }
@@ -477,6 +549,7 @@ void rotateShape(PShape shape, float rads) {
 
 void makeShape() {
   if (last_x > 0 && join) vertices.add(new Vertex(0, last_y));
+  if (!join && vertices.size() == 2) vertices.add(vertices.get(vertices.size() - 1));
   if (!vertices.isEmpty()){
     for (Object o : vertices) {
       
@@ -490,7 +563,7 @@ void makeShape() {
 }
 
 PShape startShape() {
-  first_vertex = true;
+  
   PShape sh = createShape();
   sh.beginShape();
   sh.noFill();
