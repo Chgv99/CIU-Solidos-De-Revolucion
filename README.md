@@ -10,21 +10,21 @@ Para ejecutar el programa, descomprime el .zip y ejecuta SolidDrawer.pde dentro 
 </p>
 
 # Índice
-* [Instrucciones de uso](https://github.com/Chgv99/CIU-Pong#Instrucciones)
-  * [Construir un sólido de revolución](https://github.com/Chgv99/CIU-Pong#ConstruirSR)
-  * [Manipulación del sólido y otros controles](https://github.com/Chgv99/CIU-Pong#Manipulacion)
-  * [Añadir más sólidos a la escena](https://github.com/Chgv99/CIU-Pong#AñadirMas)
-  * [Manipulación de múltiples sólidos](https://github.com/Chgv99/CIU-Pong#ManipulacionMult)
-* [Funcionamiento](https://github.com/Chgv99/CIU-Pong#Funcionamiento)
-* [Errores conocidos](https://github.com/Chgv99/CIU-Pong#Errores)
-* [Referencias](https://github.com/Chgv99/CIU-Pong#Referencias)
+* [Instrucciones de uso](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Instrucciones)
+  * [Construir un sólido de revolución](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#ConstruirSR)
+  * [Manipulación del sólido y otros controles](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Manipulacion)
+  * [Añadir más sólidos a la escena](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#AñadirMas)
+  * [Manipulación de múltiples sólidos](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#ManipulacionMult)
+* [Funcionamiento](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Funcionamiento)
+* [Errores conocidos](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Errores)
+* [Referencias](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Referencias)
 ---
 
 # Instrucciones de uso
-* [Construir un sólido de revolución](https://github.com/Chgv99/CIU-Pong#ConstruirSR)
-* [Manipulación del sólido y otros controles](https://github.com/Chgv99/CIU-Pong#Manipulacion)
-* [Añadir más sólidos a la escena](https://github.com/Chgv99/CIU-Pong#AñadirMas)
-* [Manipulación de múltiples sólidos](https://github.com/Chgv99/CIU-Pong#ManipulacionMult)
+* [Construir un sólido de revolución](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#ConstruirSR)
+* [Manipulación del sólido y otros controles](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Manipulacion)
+* [Añadir más sólidos a la escena](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#AñadirMas)
+* [Manipulación de múltiples sólidos](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#ManipulacionMult)
 
 El programa se ejecuta mostrando el menú principal. Desde aquí se puede acceder a varias pantalla, como la de ayuda, la de información o la pantalla para comenzar a dibujar.
                 
@@ -176,9 +176,9 @@ shape3d.vertex(first_v.x, first_v.y, first_v.z);
 
 # Errores
 
-* [Rotación](https://github.com/Chgv99/CIU-Pong#Rotacion)
-* [Renderizado de texto](https://github.com/Chgv99/CIU-Pong#Texto)
-* [Eje Z](https://github.com/Chgv99/CIU-Pong#EjeZ)
+* [Rotación](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Rotacion)
+* [Renderizado de texto](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Texto)
+* [Eje Z](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#EjeZ)
 
 ## Rotación
 
