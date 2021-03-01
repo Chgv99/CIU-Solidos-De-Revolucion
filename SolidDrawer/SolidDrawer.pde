@@ -1,6 +1,3 @@
-// A list of objects
-ArrayList<Polygon> polygons;
-
 //// --BOOLEAN--
 //States
 boolean main_menu, help, about, create_vertex, end_shape, first_vertex, rotate;
