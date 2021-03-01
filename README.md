@@ -11,7 +11,7 @@ Para ejecutar el programa, descomprime el .zip y ejecuta SolidDrawer.pde dentro 
 
 # Índice
 * [Instrucciones de uso](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Instrucciones-de-uso)
-  * [Construir un sólido de revolución](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#ConstruirSR)
+  * [Construir un sólido de revolución](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Construir-un-sólido-de-revolución)
   * [Manipulación del sólido y otros controles](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#Manipulacion)
   * [Añadir más sólidos a la escena](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#AñadirMas)
   * [Manipulación de múltiples sólidos](https://github.com/Chgv99/CIU-Solidos-De-Revolucion#ManipulacionMult)
