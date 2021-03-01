@@ -1,6 +1,8 @@
 # Solid Drawer
 Solid Drawer es un software 3D de dibujado de [sólidos de revolución](https://es.wikipedia.org/wiki/S%C3%B3lido_de_revoluci%C3%B3n) desarrollado en [Processing 3](https://processing.org/) para la asignatura Creando Interfaces de Usuario.
 
+Para ejecutar el programa, descomprime el .zip y ejecuta SolidDrawer.pde dentro de SolidDrawer.
+
 *Christian García Viguera. [Universidad de Las Palmas de Gran Canaria.](https://www2.ulpgc.es/)*
 
 <p align="center">
